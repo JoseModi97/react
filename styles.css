@@ -1,0 +1,42 @@
+body {
+    background-color: #f3f3f3;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.clock-container {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.timer-container {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+#time-left {
+    font-weight: 300;
+}
+
+.btn-light {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+
+.btn-light:hover {
+    background-color: #d3d9df;
+    border-color: #c8ced3;
+}
+
+.btn-outline-light {
+    color: #212529;
+    border-color: #ced4da;
+}
+
+.btn-outline-light:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
