@@ -1,11 +1,9 @@
 $(document).ready(function() {
-    let currentInput = '0';
-    let operator = null;
-    let previousInput = null;
+    let expression = '0';
     let resultDisplayed = false;
 
     function updateDisplay() {
-        $('#display').text(currentInput);
+        $('#display').text(expression);
     }
 
     function roundResult(result) {
@@ -13,79 +11,61 @@ $(document).ready(function() {
     }
 
     $('.btn-numeric').on('click', function() {
+        const value = $(this).text();
         if (resultDisplayed) {
-            currentInput = '0';
+            expression = '0';
             resultDisplayed = false;
         }
-        const value = $(this).text();
-        if (currentInput === '0' && value !== '.') {
-            currentInput = value;
+
+        if (expression === '0' && value !== '.') {
+            expression = value;
         } else {
-            if (value === '.' && currentInput.includes('.')) {
+            if (value === '.' && (expression.slice(-1) === '.' || expression.split(/[\+\-\*\/]/).pop().includes('.'))) {
                 return;
             }
-            currentInput += value;
+            expression += value;
         }
         updateDisplay();
     });
 
     $('.btn-operator').on('click', function() {
         const clickedOperator = $(this).text();
+        resultDisplayed = false;
 
-        if (clickedOperator === '-' && (operator && currentInput === '0')) {
-            currentInput = '-';
-            updateDisplay();
-            return;
-        }
+        const lastChar = expression.slice(-1);
+        const secondLastChar = expression.slice(-2, -1);
 
-        if (resultDisplayed) {
-            previousInput = currentInput;
-            resultDisplayed = false;
-        } else if (operator) {
-            $('#equals').click();
+        if (/[+\-*/]$/.test(expression) && clickedOperator !== '-') {
+            if (/[+\-*/]$/.test(secondLastChar)) {
+                expression = expression.slice(0, -2) + clickedOperator;
+            } else {
+                expression = expression.slice(0, -1) + clickedOperator;
+            }
+        } else if (clickedOperator === '-' && lastChar === '-') {
+            // do nothing
         }
-        operator = clickedOperator;
-        if(!previousInput) {
-            previousInput = currentInput;
+        else {
+            expression += clickedOperator;
         }
-        currentInput = '0';
+        updateDisplay();
     });
 
     $('#clear').on('click', function() {
-        currentInput = '0';
-        operator = null;
-        previousInput = null;
+        expression = '0';
         resultDisplayed = false;
         updateDisplay();
     });
 
     $('#equals').on('click', function() {
-        if (!operator || previousInput === null) {
-            return;
+        try {
+            const result = eval(expression.replace(/--/g, '+'));
+            expression = roundResult(result).toString();
+            resultDisplayed = true;
+            updateDisplay();
+        } catch (e) {
+            expression = 'Error';
+            resultDisplayed = true;
+            updateDisplay();
         }
-        let result;
-        const prev = parseFloat(previousInput);
-        const current = parseFloat(currentInput);
-
-        switch (operator) {
-            case '+':
-                result = prev + current;
-                break;
-            case '-':
-                result = prev - current;
-                break;
-            case '*':
-                result = prev * current;
-                break;
-            case '/':
-                result = prev / current;
-                break;
-        }
-
-        currentInput = roundResult(result).toString();
-        operator = null;
-        previousInput = null;
-        resultDisplayed = true;
-        updateDisplay();
     });
 });
