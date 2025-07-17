@@ -1,41 +1,65 @@
 body {
-  background-color: #f5f5f5;
+  background-color: #333;
+  font-family: 'Orbitron', sans-serif;
 }
 
 #drum-machine {
-  background-color: #ffffff;
+  background-color: #000;
+  border: 2px solid #555;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+  max-width: 600px;
+  margin: 50px auto;
 }
 
 .drum-pad {
   width: 100px;
-  height: 100px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  border: none;
-  background-color: #6c757d;
-  color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 5px;
+  color: #fff;
   transition: all 0.1s ease-in-out;
+  margin: 10px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-.drum-pad:hover {
-  background-color: #5a6268;
-  transform: scale(1.05);
+#Heater-1, #Heater-4, #Kick-n'-Hat {
+  background-color: #d9534f;
+  box-shadow: 0 0 10px #d9534f;
+}
+
+#Heater-2, #Clap, #Kick {
+  background-color: #f0ad4e;
+  box-shadow: 0 0 10px #f0ad4e;
+}
+
+#Heater-3, #Open-HH, #Closed-HH {
+  background-color: #5bc0de;
+  box-shadow: 0 0 10px #5bc0de;
 }
 
 .drum-pad:active {
-  background-color: #495057;
   transform: scale(0.95);
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 #display {
-  background-color: #e9ecef;
-  padding: 10px;
+  background-color: #222;
+  border: 2px solid #444;
+  padding: 15px;
   border-radius: 5px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'VT323', monospace;
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&display=swap');
