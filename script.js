@@ -30,13 +30,21 @@ $(document).ready(function() {
     });
 
     $('.btn-operator').on('click', function() {
+        const clickedOperator = $(this).text();
+
+        if (clickedOperator === '-' && (operator && currentInput === '0')) {
+            currentInput = '-';
+            updateDisplay();
+            return;
+        }
+
         if (resultDisplayed) {
             previousInput = currentInput;
             resultDisplayed = false;
         } else if (operator) {
             $('#equals').click();
         }
-        operator = $(this).text();
+        operator = clickedOperator;
         if(!previousInput) {
             previousInput = currentInput;
         }
