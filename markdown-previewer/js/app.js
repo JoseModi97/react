@@ -53,7 +53,7 @@ And here. | Okay. | I think we get it.
     });
 
     const updatePreview = () => {
-        $('#preview').html(marked($('#editor').val()));
+        $('#preview').html(marked.parse($('#editor').val()));
     };
 
     $('#editor').on('input', updatePreview);
