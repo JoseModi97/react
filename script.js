@@ -68,4 +68,28 @@ $(document).ready(function() {
             updateDisplay();
         }
     });
+
+    $(document).on('keydown', function(e) {
+        const key = e.key;
+        if (/[0-9]/.test(key)) {
+            $(`.btn-numeric:contains(${key})`).not('.btn-zero').click();
+            if(key === '0'){
+                $('.btn-zero').click();
+            }
+        } else if (key === '.') {
+            $('#decimal').click();
+        } else if (key === '+') {
+            $('#add').click();
+        } else if (key === '-') {
+            $('#subtract').click();
+        } else if (key === '*') {
+            $('#multiply').click();
+        } else if (key === '/') {
+            $('#divide').click();
+        } else if (key === 'Enter' || key === '=') {
+            $('#equals').click();
+        } else if (key === 'Backspace' || key === 'Delete') {
+            $('#clear').click();
+        }
+    });
 });
