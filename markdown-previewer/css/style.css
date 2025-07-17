@@ -1,0 +1,16 @@
+body {
+    background-color: #f8f9fa;
+}
+
+#editor {
+    height: 80vh;
+    resize: none;
+}
+
+#preview {
+    height: 80vh;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    padding: 1rem;
+}
