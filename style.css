@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#tooltip {
+    position: absolute;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.tile:hover {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.legend-item {
+    stroke: black;
+    stroke-width: 1px;
+}
